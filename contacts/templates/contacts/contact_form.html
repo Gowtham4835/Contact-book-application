@@ -1,0 +1,24 @@
+<form
+    id="contact-form"
+    method="post"
+    enctype="multipart/form-data"
+    data-url="{% if contact %}{% url 'contacts:contact_edit' contact.pk %}{% else %}{% url 'contacts:contact_create' %}{% endif %}"
+>
+    {% csrf_token %}
+ 
+    {{ form.as_p }}
+ 
+    <div id="form-errors" class="text-danger"></div>
+ 
+    <button type="submit" class="btn btn-primary">
+        Save Contact
+    </button>
+ 
+    <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal"
+    >
+        Cancel
+    </button>
+</form>
